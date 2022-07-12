@@ -1,0 +1,26 @@
+var arr = [1,2,3,4,5];
+
+// let newarr = arr.filter((v,i,a) =>{
+//     return v %2 !== 0
+// })
+
+
+// console.log(newarr)
+
+
+
+Array.prototype.myFilter = function(callback,context){
+    let newArr = [];
+    for(let i = 0; i < this.length ; i++)
+    {if(callback.call(context,this[i],i,this)){
+         newArr.push(this[i])
+    }
+    }
+    return newArr;
+}
+
+let d= arr.myFilter((v,i,a) =>{
+    return v % 2 !==0;
+})
+
+console.log(d);
