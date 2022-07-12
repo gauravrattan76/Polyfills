@@ -1,0 +1,21 @@
+let obj = {
+    name:"gaurav"
+}
+
+function printName(data){
+    console.log(this.name + data)
+}
+
+// let d = printName.bind(obj)
+// console.log(d(21))
+
+Function.prototype.myBind = function(context){
+    context._this = this;
+    return function(...args){
+        return context._this(...args)
+    }
+}
+
+
+let d = printName.myBind(obj);
+console.log(d(21))
