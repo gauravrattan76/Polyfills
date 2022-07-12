@@ -1,0 +1,20 @@
+let obj = {
+    name:"gaurav"
+}
+
+function printName(data){
+    console.log(this.name + data)
+}
+
+
+// printName.call(obj,21)
+
+
+//context is the object
+Function.prototype.myCall = function(context,...args){
+    context._this = this;
+    return context._this(...args)
+}
+
+
+printName.myCall(obj,21)
