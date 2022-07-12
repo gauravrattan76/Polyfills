@@ -1,0 +1,18 @@
+let obj = {
+    name:"gaurav"
+}
+
+function printName(data){
+    console.log(this.name + data)
+}
+
+
+//  printName.apply(obj,[21])
+
+Function.prototype.myApply = function(context,args){
+    context._this = this;
+    return context._this(args)
+}
+
+
+printName.myApply(obj,21)
