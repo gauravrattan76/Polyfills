@@ -1,0 +1,34 @@
+var arr = [1,2,3,4,5];
+
+// let sum = arr.reduce((acc,val)=>{
+//     return acc += val;
+// },0)
+
+
+// console.log(sum)
+
+Array.prototype.myReduce = function(callback, initialval)
+{
+    let acc = initialval === "undefined" ? "undefined" : initialval;
+    
+    for(let i = 0; i < this.length ; i++)
+    {
+        if(acc !== "undefined")
+        {
+            acc = callback.call(undefined,acc, this[i],i,this)
+        }
+        else
+        {
+            acc = this[i]
+        }
+    }
+    return acc;
+}
+
+let  d = arr.myReduce((acc,v)=>{
+    return acc += v
+},0)
+
+console.log(d);
+
+
