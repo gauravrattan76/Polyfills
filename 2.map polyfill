@@ -1,0 +1,27 @@
+var arr = [1,2,3,4,5];
+
+// let newarr = arr.map((v,i,a) =>{
+//     return v * 4
+// })
+
+
+// console.log(newarr)
+
+
+
+
+ //since map return a new array, we need to make new array and push callback and then data inside the call back
+Array.prototype.myMap = function(callback){
+    let newArr = [];
+    for(let i = 0; i < this.length ; i++)
+    {
+        newArr.push(callback(this[i],i,this))
+    }
+    return newArr;
+}
+
+let d= arr.myMap((v,i,a) =>{
+    return v * 4
+})
+
+console.log(d);
