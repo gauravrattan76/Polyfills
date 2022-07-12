@@ -1,0 +1,19 @@
+var arr = [1,2,3,4,5];
+
+// arr.forEach((v,i,a) =>{
+//     a[i] = v*3;
+// })
+
+// console.log(arr)
+
+// this refers to the array and we return a callback function
+Array.prototype.myFor = function(callback){
+    for(let i = 0; i < this.length ; i++)
+    {
+        callback(this[i],i,this)
+    }
+}
+
+arr.myFor((v,i,a)=>{
+    console.log(v,i,a)
+})
